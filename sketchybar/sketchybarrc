@@ -1,0 +1,107 @@
+#!/usr/bin/env sh
+
+source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
+source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
+
+ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+
+FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+PADDINGS=3 # All paddings use this value (icon, label, background)
+
+launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+# Setting up the general bar appearance and default values
+sketchybar --bar     height=39                                         \
+                     color=$BAR_COLOR                                  \
+                     shadow=on                                         \
+                     position=top                                      \
+                     sticky=on                                         \
+                     padding_right=7                                   \
+                     padding_left=7                                    \
+                     corner_radius=9                                   \
+                     y_offset=10                                       \
+                     margin=10                                         \
+                     blur_radius=20                                    \
+                     notch_width=0                                     \
+                                                                       \
+           --default updates=when_shown                                \
+                     icon.font="$FONT:Bold:14.0"                       \
+                     icon.color=$ICON_COLOR                            \
+                     icon.padding_left=$PADDINGS                       \
+                     icon.padding_right=$PADDINGS                      \
+                     label.font="$FONT:Semibold:13.0"                  \
+                     label.color=$LABEL_COLOR                          \
+                     label.padding_left=$PADDINGS                      \
+                     label.padding_right=$PADDINGS                     \
+                     background.padding_right=$PADDINGS                \
+                     background.padding_left=$PADDINGS                 \
+                     background.height=26                              \
+                     background.corner_radius=9                        \
+                     popup.background.border_width=2                   \
+                     popup.background.corner_radius=11                 \
+                     popup.background.border_color=$POPUP_BORDER_COLOR \
+                     popup.background.color=$POPUP_BACKGROUND_COLOR    \
+                     popup.background.shadow.drawing=on
+
+
+source "$ITEM_DIR/apple.sh"
+sketchybar --add event aerospace_workspace_change
+
+for sid in $(aerospace list-workspaces --all); do
+    sketchybar --add item space.$sid left \
+        --subscribe space.$sid aerospace_workspace_change \
+        --set space.$sid \
+        background.color=0x44ffffff \
+        label.font="sketchybar-app-font:Regular:16.0" \
+        label.padding_right=20 \
+        label.padding_left=0 \
+        background.corner_radius=5 \
+        background.height=25 \
+        background.drawing=off \
+        icon.padding_left=10 \
+        icon="$sid" \
+        click_script="aerospace workspace $sid" \
+        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+done
+
+for sid in $(aerospace list-workspaces --all); do
+  apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+
+  sketchybar --set space.$sid drawing=on
+
+  icon_strip=" "
+  if [ "${apps}" != "" ]; then
+    while read -r app; do
+      icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
+    done <<<"${apps}"
+  else
+    icon_strip=""
+  fi
+  sketchybar --set space.$sid label="$icon_strip"
+done
+
+sketchybar --add item space_separator left \
+  --set space_separator icon="👀" \
+  icon.font="sketchybar-app-font:Regular:16.0" \
+  label.drawing=off \
+  background.drawing=off \
+  script="$PLUGIN_DIR/space_windows.sh" \
+  --subscribe space_separator aerospace_workspace_change front_app front_app_switched
+
+sketchybar --add item front_app left \
+  --set front_app icon.drawing=off \
+  script="$PLUGIN_DIR/front_app.sh" \
+  label.font="$FONT:Bold:14.0"                  \
+  --subscribe front_app front_app_switched
+
+# Right
+source "$ITEM_DIR/calendar.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/spotify.sh"
+
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --update
+
+echo "sketchybar configuation loaded.."
