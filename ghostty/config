@@ -1,0 +1,21 @@
+theme = catppuccin-mocha
+font-family = CaskaydiaCove Nerd Font Mono
+cursor-style = block
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-titlebar-style = tabs
+# splits
+keybind = cmd+/=new_split:right
+keybind = cmd+minus=new_split:down
+
+# vim-tmux style navigation
+keybind = cmd+l=goto_split:right
+keybind = cmd+h=goto_split:left
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+
+# quick term
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position=center
+
+
