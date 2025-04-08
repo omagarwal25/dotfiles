@@ -55,6 +55,7 @@ for sid in $(aerospace list-workspaces --all); do
         background.color=0x44ffffff \
         label.font="sketchybar-app-font:Regular:16.0" \
         label.padding_right=20 \
+        label.y_offset=-1 \
         label.padding_left=0 \
         background.corner_radius=5 \
         background.height=25 \
@@ -86,12 +87,14 @@ sketchybar --add item space_separator left \
   icon.font="sketchybar-app-font:Regular:16.0" \
   label.drawing=off \
   background.drawing=off \
+  icon.padding_right=0 \
   script="$PLUGIN_DIR/space_windows.sh" \
   --subscribe space_separator aerospace_workspace_change front_app front_app_switched
 
 sketchybar --add item front_app left \
   --set front_app icon.drawing=off \
   script="$PLUGIN_DIR/front_app.sh" \
+  label.padding_left=0 \
   label.font="$FONT:Bold:14.0"                  \
   --subscribe front_app front_app_switched
 
