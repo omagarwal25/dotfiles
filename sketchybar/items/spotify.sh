@@ -2,14 +2,14 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 POPUP_SCRIPT="sketchybar -m --set spotify.anchor popup.drawing=toggle"
 
 sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
-           --add       item            spotify.anchor right                \
+           --add       item            spotify.anchor right                 \
            --set       spotify.anchor  script="$PLUGIN_DIR/spotify.sh"      \
                                        click_script="$POPUP_SCRIPT"         \
                                        popup.horizontal=on                  \
                                        popup.align=center                   \
                                        popup.height=120                     \
-                                       icon=􀑪\
-                                       icon.background.height=8        \
+                                       icon=􀑪                               \
+                                       icon.background.height=8             \
                                        background.padding_right=0           \
                                        label.font="$FONT:Heavy:14.0"        \
                                        drawing=off                          \

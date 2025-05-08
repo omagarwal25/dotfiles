@@ -48,6 +48,7 @@ sketchybar --bar     height=39                                         \
 source "$ITEM_DIR/apple.sh"
 sketchybar --add event aerospace_workspace_change
 
+
 for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
@@ -102,6 +103,7 @@ sketchybar --add item front_app left \
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
 source "$ITEM_DIR/volume.sh"
+source "$ITEM_DIR/caffeine.sh"
 source "$ITEM_DIR/spotify.sh"
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)

@@ -1,0 +1,15 @@
+{
+  "workspace": {
+    "library": [
+      "./"
+    ]
+  },
+  "runtime": {
+    "version": "Lua 5.4",
+    "path": [
+      "?.lua",
+      "?/init.lua"
+    ]
+  }
+}
+
