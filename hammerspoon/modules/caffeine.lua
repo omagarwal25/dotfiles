@@ -1,4 +1,5 @@
 local bar = require("modules.sketchybar")
+local util = require("util")
 
 local M = {}
 
@@ -32,6 +33,8 @@ function M.init()
     caffeine:setClickCallback(M.toggle)
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
   end
+
+  hs.hotkey.bind(util.hyper, "c", M.toggle)
 end
 
 function M.caffieneOn()
