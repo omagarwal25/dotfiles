@@ -21,7 +21,7 @@ sketchybar --add item           apple.logo left                             \
            --set apple.activity icon=$ACTIVITY                              \
                                 label="Activity"                            \
                                 click_script="open -a 'Activity Monitor';
-                                              $POPUP_OFF"\
+                                              $POPUP_OFF"                   \
                                                                             \
            --add item           apple.lock popup.apple.logo                 \
            --set apple.lock     icon=$LOCK                                  \
