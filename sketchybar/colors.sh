@@ -4,7 +4,7 @@
 export BLACK=0xff181926
 export WHITE=0xffcad3f5
 export RED=0xffed8796
-export GREEN=0xffa6da95
+export GREEN=0xcca6da95
 export BLUE=0xff8aadf4
 export YELLOW=0xffeed49f
 export ORANGE=0xfff5a97f
@@ -19,7 +19,7 @@ export LABEL_COLOR=$WHITE # Color of all labels
 export BACKGROUND_1=0xff3c3e4f
 export BACKGROUND_2=0xff494d64
 
-export POPUP_BACKGROUND_COLOR=$BLACK
-export POPUP_BORDER_COLOR=$WHITE
+export POPUP_BACKGROUND_COLOR=$BAR_COLOR
+export POPUP_BORDER_COLOR=$TRANSPARENT
 
 export SHADOW_COLOR=$BLACK

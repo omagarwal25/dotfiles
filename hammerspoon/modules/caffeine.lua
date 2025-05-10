@@ -35,6 +35,9 @@ function M.init()
   end
 
   hs.hotkey.bind(util.hyper, "c", M.toggle)
+
+  local screenWatcher = hs.screen.watcher.new(M.caffieneOff)
+  screenWatcher:start()
 end
 
 function M.caffieneOn()

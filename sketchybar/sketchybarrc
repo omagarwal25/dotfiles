@@ -46,58 +46,8 @@ sketchybar --bar     height=39                                         \
 
 
 source "$ITEM_DIR/apple.sh"
-sketchybar --add event aerospace_workspace_change
-
-
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=0x44ffffff \
-        label.font="sketchybar-app-font:Regular:16.0" \
-        label.padding_right=20 \
-        label.y_offset=-1 \
-        label.padding_left=0 \
-        background.corner_radius=5 \
-        background.height=25 \
-        background.drawing=off \
-        icon.padding_left=10 \
-        icon="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
-
-for sid in $(aerospace list-workspaces --all); do
-  apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-
-  sketchybar --set space.$sid drawing=on
-
-  icon_strip=" "
-  if [ "${apps}" != "" ]; then
-    while read -r app; do
-      icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
-    done <<<"${apps}"
-  else
-    icon_strip=""
-  fi
-  sketchybar --set space.$sid label="$icon_strip"
-done
-
-sketchybar --add item space_separator left \
-  --set space_separator icon="👀" \
-  icon.font="sketchybar-app-font:Regular:16.0" \
-  label.drawing=off \
-  background.drawing=off \
-  icon.padding_right=0 \
-  script="$PLUGIN_DIR/space_windows.sh" \
-  --subscribe space_separator aerospace_workspace_change front_app front_app_switched
-
-sketchybar --add item front_app left \
-  --set front_app icon.drawing=off \
-  script="$PLUGIN_DIR/front_app.sh" \
-  label.padding_left=0 \
-  label.font="$FONT:Bold:14.0"                  \
-  --subscribe front_app front_app_switched
+source "$ITEM_DIR/space_windows.sh"
+source "$ITEM_DIR/front_app.sh"
 
 # Right
 source "$ITEM_DIR/calendar.sh"

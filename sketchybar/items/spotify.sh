@@ -51,9 +51,9 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
            --set       spotify.shuffle icon=􀊝                               \
                                        icon.padding_left=5                  \
                                        icon.padding_right=5                 \
-                                       icon.color=$BLACK                    \
-                                       icon.highlight_color=$MAGENTA        \
+                                       icon.highlight_color=$MAGENTA \
                                        label.drawing=off                    \
+                                       icon.color=$WHITE                    \
                                        script="$PLUGIN_DIR/spotify.sh"      \
                                        y_offset=-30                         \
            --subscribe spotify.shuffle mouse.clicked                        \
@@ -62,7 +62,7 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
            --set       spotify.back    icon=􀊎                               \
                                        icon.padding_left=5                  \
                                        icon.padding_right=5                 \
-                                       icon.color=$BLACK                    \
+                                       icon.color=$WHITE                    \
                                        script="$PLUGIN_DIR/spotify.sh"      \
                                        label.drawing=off                    \
                                        y_offset=-30                         \
@@ -74,7 +74,6 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
                                        background.corner_radius=20          \
                                        width=40                             \
                                        align=center                         \
-                                       background.color=$BLACK              \
                                        background.border_color=$WHITE       \
                                        background.border_width=0            \
                                        background.drawing=on                \
@@ -91,7 +90,7 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
            --set       spotify.next    icon=􀊐                               \
                                        icon.padding_left=5                  \
                                        icon.padding_right=10                \
-                                       icon.color=$BLACK                    \
+                                       icon.color=$WHITE                    \
                                        label.drawing=off                    \
                                        script="$PLUGIN_DIR/spotify.sh"      \
                                        y_offset=-30                         \
@@ -99,10 +98,10 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
                                                                             \
            --add       item            spotify.repeat popup.spotify.anchor  \
            --set       spotify.repeat  icon=􀊞                               \
-                                       icon.highlight_color=$MAGENTA        \
                                        icon.padding_left=5                  \
+                                       icon.color=$WHITE                    \
+                                       icon.highlight_color=$MAGENTA \
                                        icon.padding_right=10                \
-                                       icon.color=$BLACK                    \
                                        label.drawing=off                    \
                                        script="$PLUGIN_DIR/spotify.sh"      \
                                        y_offset=-30                         \
@@ -116,7 +115,7 @@ sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
                                                spotify.play                 \
                                                spotify.next                 \
                                                spotify.repeat               \
-           --set      spotify          background.color=$GREEN              \
+           --set      spotify          background.color=$TRANSPARENT              \
                                        background.corner_radius=11          \
                                        background.drawing=on                \
                                        y_offset=-30                         \
