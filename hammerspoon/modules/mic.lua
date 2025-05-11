@@ -159,7 +159,7 @@ function M.init()
 		updateBar()
 	end
 
-	bindHotkeys({ { "cmd", "alt" }, "m" }, 0.5)
+	bindHotkeys({ {}, "f20" }, 0.5)
 end
 
 return M
