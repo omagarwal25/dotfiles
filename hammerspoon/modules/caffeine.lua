@@ -10,46 +10,45 @@ local awakeIcon = "􂊭"
 local sleepIcon = "􀆾"
 
 local function updateBar(state)
-  local icon = state and awakeIcon or sleepIcon
-  bar.set(itemName, { label = icon })
+	local icon = state and awakeIcon or sleepIcon
+	bar.set(itemName, { label = icon })
+	caffeine:setTitle(icon)
 end
 
 local function setCaffeineDisplay(state)
-  if state then
-    caffeine:setTitle(awakeIcon)
-    updateBar(true)
-  else
-    caffeine:setTitle(sleepIcon)
-    updateBar(false)
-  end
+	if state then
+		updateBar(true)
+	else
+		updateBar(false)
+	end
 end
 
 function M.toggle()
-  setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+	setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
 
 function M.init()
-  if caffeine then
-    caffeine:setClickCallback(M.toggle)
-    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-  end
+	if caffeine then
+		caffeine:setClickCallback(M.toggle)
+		setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+	end
 
-  hs.hotkey.bind(util.hyper, "c", M.toggle)
+	hs.hotkey.bind(util.hyper, "c", M.toggle)
 
-  local screenWatcher = hs.screen.watcher.new(M.caffieneOff)
-  screenWatcher:start()
+	local screenWatcher = hs.screen.watcher.new(M.caffieneOff)
+	screenWatcher:start()
 end
 
 function M.caffieneOn()
-  hs.caffeinate.set("displayIdle", true, true)
+	hs.caffeinate.set("displayIdle", true, true)
 
-  setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
 function M.caffieneOff()
-  hs.caffeinate.set("displayIdle", false, true)
+	hs.caffeinate.set("displayIdle", false, true)
 
-  setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
 return M

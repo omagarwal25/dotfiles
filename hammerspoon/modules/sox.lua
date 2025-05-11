@@ -78,7 +78,7 @@ local function toggleSoxAndVolume()
 	end
 end
 
-local function watcherCallback(event)
+function M.watcherCallback(event)
 	if event == "dOut" and isSoxRunning() then
 		stop()
 	end
@@ -86,8 +86,6 @@ end
 
 function M.init()
 	hs.hotkey.bind(util.hyper, "m", toggleSoxAndVolume)
-	hs.audiodevice.watcher.setCallback(watcherCallback)
-	hs.audiodevice.watcher.start()
 end
 
 return M

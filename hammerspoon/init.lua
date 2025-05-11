@@ -2,12 +2,15 @@ local sox = require("modules.sox")
 local bar = require("modules.sketchybar")
 local app = require("modules.app")
 local tft = require("modules.tft")
+local mic = require("modules.mic")
 local caffeine = require("modules.caffeine")
-local network = require("modules.network")
+local kvm = require("modules.kvm")
+local hub = require("modules.hub")
 local util = require("util")
+-- local network = require("modules.network")
 
 require("hs.ipc")
-
+hs.loadSpoon("MenuExtraTrigger")
 hs.loadSpoon("EmmyLua")
 
 hs.hotkey.bind(util.hyper, "R", function()
@@ -18,9 +21,14 @@ end)
 
 caffeine.init()
 tft.init()
+mic.init()
 app.init()
 sox.init()
+kvm.init()
 
--- network.init()
+hub.init({ kvm.start() }, { kvm.stop() })
+
+hs.audiodevice.watcher.setCallback(util.combineFns({ sox.watcherCallback, mic.watcherCallback }))
+hs.audiodevice.watcher.start()
 
 hs.notify.show("Hammerspoon", "", "Hammerspoon reloaded")

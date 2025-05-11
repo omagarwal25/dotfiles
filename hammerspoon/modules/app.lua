@@ -2,15 +2,18 @@ local util = require("util")
 
 local M = {}
 
-function M.init()
-	hs.hotkey.bind(util.hyper, "s", function()
-		hs.application.launchOrFocus("Spotify")
+local function bind(key, appName)
+	hs.hotkey.bind(util.hyper, key, function()
+		hs.application.launchOrFocus(appName)
 	end)
+end
+
+function M.init()
+	-- Bind Hyper S to spotify
+	bind("S", "Spotify")
 
 	-- Bind Hyper + A to launch Arc
-	hs.hotkey.bind(util.hyper, "a", function()
-		hs.application.launchOrFocus("Arc")
-	end)
+	bind("A", "Arc")
 end
 
 return M
