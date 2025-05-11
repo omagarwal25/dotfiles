@@ -10,8 +10,9 @@ local function handleUsb(event)
 	local productName = event.productName
 
 	if string.find(productName, hubName) then
-		if eventType == "removed" then
+		if eventType ~= "removed" then
 			if startFn ~= nil then
+				hs.alert.show("USB hub connected")
 				startFn()
 			end
 		else

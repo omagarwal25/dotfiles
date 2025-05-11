@@ -26,7 +26,7 @@ app.init()
 sox.init()
 kvm.init()
 
-hub.init({ kvm.start() }, { kvm.stop() })
+hub.init({ kvm.start }, { kvm.stop })
 
 hs.audiodevice.watcher.setCallback(util.combineFns({ sox.watcherCallback, mic.watcherCallback }))
 hs.audiodevice.watcher.start()
