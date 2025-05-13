@@ -1,10 +1,18 @@
 #!/bin/bash
 
+source "$HOME/.config/sketchybar/aerospace.sh"
+
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event change-workspace-monitor
 
 for sid in $(aerospace list-workspaces --all); do
+
+    # Get the monitor ID for the workspace
+    monitor_id=$(get_workspace_monitor_id "$sid")
+
     space_item=(
         background.color=0x44ffffff
+        display="$monitor_id"
         label.font="sketchybar-app-font:Regular:16.0"
         label.padding_right=20
         label.y_offset=-1
@@ -24,16 +32,4 @@ for sid in $(aerospace list-workspaces --all); do
         --set space."$sid" "${space_item[@]}"
 done
 
-for sid in $(aerospace list-workspaces --all); do
-    apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-    icon_strip=""
-
-    if [ -n "$apps" ]; then
-        sketchybar --set space."$sid" drawing=on
-        while read -r app; do
-            icon_strip+=" $("$CONFIG_DIR"/plugins/icon_map.sh "$app")"
-        done <<<"$apps"
-    fi
-
-    sketchybar --set space."$sid" label="$icon_strip"
-done
+update_apps

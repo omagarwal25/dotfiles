@@ -7,6 +7,7 @@ local caffeine = require("modules.caffeine")
 local kvm = require("modules.kvm")
 local hub = require("modules.hub")
 local util = require("util")
+local sketchybar = require("modules.sketchybar")
 -- local network = require("modules.network")
 
 require("hs.ipc")
@@ -25,6 +26,7 @@ mic.init()
 app.init()
 sox.init()
 kvm.init()
+sketchybar.init()
 
 hub.init({ kvm.start }, { kvm.stop })
 
