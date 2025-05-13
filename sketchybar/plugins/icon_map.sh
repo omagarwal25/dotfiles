@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 ### START-OF-ICON-MAP
 function icon_map() {
@@ -789,7 +789,7 @@ function icon_map() {
     esac
 }
 
-icon_map $1
+icon_map "$1"
 
 echo "$icon_result"
 ### END-OF-ICON-MAP

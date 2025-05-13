@@ -1,122 +1,173 @@
+#!/bin/bash
+
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 POPUP_SCRIPT="sketchybar -m --set spotify.anchor popup.drawing=toggle"
 
-sketchybar --add       event           spotify_change $SPOTIFY_EVENT        \
-           --add       item            spotify.anchor right                 \
-           --set       spotify.anchor  script="$PLUGIN_DIR/spotify.sh"      \
-                                       click_script="$POPUP_SCRIPT"         \
-                                       popup.horizontal=on                  \
-                                       popup.align=center                   \
-                                       popup.height=120                     \
-                                       icon=􀑪                               \
-                                       icon.background.height=8             \
-                                       background.padding_right=0           \
-                                       label.font="$FONT:Heavy:14.0"        \
-                                       drawing=off                          \
-           --subscribe spotify.anchor  mouse.entered mouse.exited           \
-                                       mouse.exited.global                  \
-           --add       item            spotify.cover popup.spotify.anchor   \
-           --set       spotify.cover   script="$PLUGIN_DIR/spotify.sh"      \
-                                       label.drawing=off                    \
-                                       icon.drawing=off                     \
-                                       background.padding_left=12           \
-                                       background.padding_right=10          \
-                                       background.image.scale=0.15          \
-                                       background.image.drawing=on          \
-                                       background.drawing=on                \
-                                                                            \
-           --add       item            spotify.title popup.spotify.anchor   \
-           --set       spotify.title   icon.drawing=off                     \
-                                       background.padding_left=0            \
-                                       background.padding_right=0           \
-                                       width=0                              \
-                                       label.font="$FONT:Heavy:14.0"        \
-                                       y_offset=40                          \
-                                                                            \
-           --add       item            spotify.artist popup.spotify.anchor  \
-           --set       spotify.artist  icon.drawing=off                     \
-                                       y_offset=20                          \
-                                       background.padding_left=0            \
-                                       background.padding_right=0           \
-                                       width=0                              \
-                                                                            \
-           --add       item            spotify.album popup.spotify.anchor   \
-           --set       spotify.album   icon.drawing=off                     \
-                                       background.padding_left=0            \
-                                       background.padding_right=0           \
-                                       y_offset=3                           \
-                                       width=0                              \
-                                                                            \
-           --add       item            spotify.shuffle popup.spotify.anchor \
-           --set       spotify.shuffle icon=􀊝                               \
-                                       icon.padding_left=5                  \
-                                       icon.padding_right=5                 \
-                                       icon.highlight_color=$MAGENTA \
-                                       label.drawing=off                    \
-                                       icon.color=$WHITE                    \
-                                       script="$PLUGIN_DIR/spotify.sh"      \
-                                       y_offset=-30                         \
-           --subscribe spotify.shuffle mouse.clicked                        \
-                                                                            \
-           --add       item            spotify.back popup.spotify.anchor    \
-           --set       spotify.back    icon=􀊎                               \
-                                       icon.padding_left=5                  \
-                                       icon.padding_right=5                 \
-                                       icon.color=$WHITE                    \
-                                       script="$PLUGIN_DIR/spotify.sh"      \
-                                       label.drawing=off                    \
-                                       y_offset=-30                         \
-           --subscribe spotify.back    mouse.clicked                        \
-                                                                            \
-           --add       item            spotify.play popup.spotify.anchor    \
-           --set       spotify.play    icon=􀊔                               \
-                                       background.height=40                 \
-                                       background.corner_radius=20          \
-                                       width=40                             \
-                                       align=center                         \
-                                       background.border_color=$WHITE       \
-                                       background.border_width=0            \
-                                       background.drawing=on                \
-                                       icon.padding_left=4                  \
-                                       icon.padding_right=5                 \
-                                       icon.color=$WHITE                    \
-                                       updates=on                           \
-                                       label.drawing=off                    \
-                                       script="$PLUGIN_DIR/spotify.sh"      \
-                                       y_offset=-30                         \
-           --subscribe spotify.play    mouse.clicked spotify_change         \
-                                                                            \
-           --add       item            spotify.next popup.spotify.anchor    \
-           --set       spotify.next    icon=􀊐                               \
-                                       icon.padding_left=5                  \
-                                       icon.padding_right=10                \
-                                       icon.color=$WHITE                    \
-                                       label.drawing=off                    \
-                                       script="$PLUGIN_DIR/spotify.sh"      \
-                                       y_offset=-30                         \
-           --subscribe spotify.next    mouse.clicked                        \
-                                                                            \
-           --add       item            spotify.repeat popup.spotify.anchor  \
-           --set       spotify.repeat  icon=􀊞                               \
-                                       icon.padding_left=5                  \
-                                       icon.color=$WHITE                    \
-                                       icon.highlight_color=$MAGENTA \
-                                       icon.padding_right=10                \
-                                       label.drawing=off                    \
-                                       script="$PLUGIN_DIR/spotify.sh"      \
-                                       y_offset=-30                         \
-           --subscribe spotify.repeat  mouse.clicked                        \
-                                                                            \
-           --add       item            spotify.spacer popup.spotify.anchor  \
-           --set       spotify.spacer  width=5                              \
-                                                                            \
-           --add      bracket          spotify spotify.shuffle              \
-                                               spotify.back                 \
-                                               spotify.play                 \
-                                               spotify.next                 \
-                                               spotify.repeat               \
-           --set      spotify          background.color=$TRANSPARENT              \
-                                       background.corner_radius=11          \
-                                       background.drawing=on                \
-                                       y_offset=-30                         \
-                                       drawing=off
+spotify_anchor=(
+    script="$PLUGIN_DIR/spotify.sh"
+    click_script="$POPUP_SCRIPT"
+    popup.horizontal=on
+    popup.align=center
+    popup.height=120
+    icon=􀑪
+    icon.background.height=8
+    background.padding_right=0
+    label.font="$FONT:Heavy:14.0"
+    drawing=off
+)
+
+spotify_cover=(
+    script="$PLUGIN_DIR/spotify.sh"
+    label.drawing=off
+    icon.drawing=off
+    background.padding_left=12
+    background.padding_right=10
+    background.image.scale=0.15
+    background.image.drawing=on
+    background.drawing=on
+)
+
+spotify_title=(
+    icon.drawing=off
+    background.padding_left=0
+    background.padding_right=0
+    width=0
+    label.font="$FONT:Heavy:14.0"
+    y_offset=40
+)
+
+spotify_artist=(
+    icon.drawing=off
+    y_offset=20
+    background.padding_left=0
+    background.padding_right=0
+    width=0
+)
+
+spotify_album=(
+    icon.drawing=off
+    background.padding_left=0
+    background.padding_right=0
+    y_offset=3
+    width=0
+)
+
+spotify_shuffle=(
+    icon=􀊝
+    icon.padding_left=5
+    icon.padding_right=5
+    icon.highlight_color="$MAGENTA"
+    label.drawing=off
+    icon.color="$WHITE"
+    script="$PLUGIN_DIR/spotify.sh"
+    y_offset=-30
+)
+
+spotify_back=(
+    icon=􀊎
+    icon.padding_left=5
+    icon.padding_right=5
+    icon.color="$WHITE"
+    script="$PLUGIN_DIR/spotify.sh"
+    label.drawing=off
+    y_offset=-30
+)
+
+spotify_play=(
+    icon=􀊔
+    background.height=40
+    background.corner_radius=20
+    width=40
+    align=center
+    background.border_color="$WHITE"
+    background.border_width=0
+    background.drawing=on
+    icon.padding_left=4
+    icon.padding_right=5
+    icon.color="$WHITE"
+    updates=on
+    label.drawing=off
+    script="$PLUGIN_DIR/spotify.sh"
+    y_offset=-30
+)
+
+spotify_next=(
+    icon=􀊐
+    icon.padding_left=5
+    icon.padding_right=10
+    icon.color="$WHITE"
+    label.drawing=off
+    script="$PLUGIN_DIR/spotify.sh"
+    y_offset=-30
+)
+
+spotify_repeat=(
+    icon=􀊞
+    icon.padding_left=5
+    icon.color="$WHITE"
+    icon.highlight_color="$MAGENTA"
+    icon.padding_right=10
+    label.drawing=off
+    script="$PLUGIN_DIR/spotify.sh"
+    y_offset=-30
+)
+
+spotify_spacer=(
+    width=5
+)
+
+spotify_bracket=(
+    background.color="$TRANSPARENT"
+    background.corner_radius=11
+    background.drawing=on
+    y_offset=-30
+    drawing=off
+)
+
+sketchybar --add event spotify_change "$SPOTIFY_EVENT" \
+    --add item spotify.anchor right \
+    --set spotify.anchor "${spotify_anchor[@]}" \
+    --subscribe spotify.anchor mouse.entered mouse.exited mouse.exited.global \
+    \
+    --add item spotify.cover popup.spotify.anchor \
+    --set spotify.cover "${spotify_cover[@]}" \
+    \
+    --add item spotify.title popup.spotify.anchor \
+    --set spotify.title "${spotify_title[@]}" \
+    \
+    --add item spotify.artist popup.spotify.anchor \
+    --set spotify.artist "${spotify_artist[@]}" \
+    \
+    --add item spotify.album popup.spotify.anchor \
+    --set spotify.album "${spotify_album[@]}" \
+    \
+    --add item spotify.shuffle popup.spotify.anchor \
+    --set spotify.shuffle "${spotify_shuffle[@]}" \
+    --subscribe spotify.shuffle mouse.clicked \
+    \
+    --add item spotify.back popup.spotify.anchor \
+    --set spotify.back "${spotify_back[@]}" \
+    --subscribe spotify.back mouse.clicked \
+    \
+    --add item spotify.play popup.spotify.anchor \
+    --set spotify.play "${spotify_play[@]}" \
+    --subscribe spotify.play mouse.clicked spotify_change \
+    \
+    --add item spotify.next popup.spotify.anchor \
+    --set spotify.next "${spotify_next[@]}" \
+    --subscribe spotify.next mouse.clicked \
+    \
+    --add item spotify.repeat popup.spotify.anchor \
+    --set spotify.repeat "${spotify_repeat[@]}" \
+    --subscribe spotify.repeat mouse.clicked \
+    \
+    --add item spotify.spacer popup.spotify.anchor \
+    --set spotify.spacer "${spotify_spacer[@]}" \
+    \
+    --add bracket spotify \
+    spotify.shuffle \
+    spotify.back \
+    spotify.play \
+    spotify.next \
+    spotify.repeat \
+    --set spotify "${spotify_bracket[@]}"

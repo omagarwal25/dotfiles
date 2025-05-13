@@ -3,7 +3,6 @@ local util = require("util")
 
 local M = {}
 
-local caffeine = hs.menubar.new()
 local itemName = "caffeine"
 
 local awakeIcon = "􂊭"
@@ -12,7 +11,6 @@ local sleepIcon = "􀆾"
 local function updateBar(state)
 	local icon = state and awakeIcon or sleepIcon
 	bar.set(itemName, { label = icon })
-	caffeine:setTitle(icon)
 end
 
 local function setCaffeineDisplay(state)
@@ -28,10 +26,7 @@ function M.toggle()
 end
 
 function M.init()
-	if caffeine then
-		caffeine:setClickCallback(M.toggle)
-		setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
-	end
+	setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 
 	hs.hotkey.bind(util.hyper, "c", M.toggle)
 

@@ -3,7 +3,6 @@ local bar = require("modules.sketchybar")
 local M = {}
 
 local timeSinceMute = 0
-local menu = hs.menubar.new()
 local watcher
 local itemName = "mic"
 
@@ -12,31 +11,15 @@ local notMutedIcon = "􀊰"
 
 local function setBar(state)
 	if state == "off" then
-		-- bar.set(itemName, {
-
-		if menu ~= nil then
-			menu:removeFromMenuBar()
-		end
-
 		bar.set(itemName, { ["label.drawing"] = "off" })
 
 		return
 	end
 
-	if menu == nil then
-		menu = hs.menubar.new()
-	end
-
-	menu:returnToMenuBar()
-
 	local icon = (state == "muted") and mutedIcon or notMutedIcon
 
 	bar.set(itemName, { ["label.drawing"] = "on" })
 	bar.set(itemName, { label = icon })
-
-	if menu ~= nil then
-		menu:setTitle(icon)
-	end
 end
 
 local function updateBar()
@@ -153,11 +136,7 @@ end
 function M.init()
 	timeSinceMute = 0
 	switchWatcher()
-
-	if menu ~= nil then
-		menu:setClickCallback(M.toggle)
-		updateBar()
-	end
+	updateBar()
 
 	bindHotkeys({ {}, "f20" }, 0.5)
 end

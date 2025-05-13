@@ -31,8 +31,8 @@ toggle_devices() {
     if [ "${device}" = "$CURRENT" ]; then
       COLOR=$WHITE
     fi
-    args+=(--add item volume.device.$COUNTER popup."$NAME" \
-           --set volume.device.$COUNTER label="${device}" \
+    args+=(--add item volume.device."$COUNTER" popup."$NAME" \
+           --set volume.device."$COUNTER" label="${device}" \
                                         label.color="$COLOR" \
                  click_script="SwitchAudioSource -s \"${device}\" && sketchybar --set /volume.device\.*/ label.color=$GREY --set \$NAME label.color=$WHITE --set $NAME popup.drawing=off")
     COUNTER=$((COUNTER+1))

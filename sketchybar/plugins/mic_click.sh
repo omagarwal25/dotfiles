@@ -1,3 +1,3 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 hs -c "require(\"modules.mic\").toggle()"

@@ -13,7 +13,6 @@ return {
 
   { import = "astrocommunity.color.twilight-nvim" },
 
-  { import = "astrocommunity.bars-and-lines.feline-nvim" },
   { import = "astrocommunity.bars-and-lines.dropbar-nvim" },
   { import = "astrocommunity.bars-and-lines.lualine-nvim" },
   { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
@@ -25,7 +24,6 @@ return {
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
 
   { import = "astrocommunity.motion.flash-nvim" },
-  -- { import = "astrocommunity.motion.tabout-nvim" },
 
   { import = "astrocommunity.motion.mini-basics" },
   { import = "astrocommunity.motion.mini-bracketed" },
@@ -42,13 +40,15 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.prisma" },
   { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.yaml" },
+
+  { import = "astrocommunity.programming-language-support.kulala-nvim" },
 
   { import = "astrocommunity.workflow.hardtime-nvim" },
   { import = "astrocommunity.workflow.precognition-nvim" },
 
   { import = "astrocommunity.recipes.vscode" },
-  -- import/override with your plugins folder
 }

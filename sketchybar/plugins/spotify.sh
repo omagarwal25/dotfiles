@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 next ()
 {
@@ -100,7 +100,7 @@ mouse_clicked () {
 }
 
 popup () {
-  sketchybar --set spotify.anchor popup.drawing=$1
+  sketchybar --set spotify.anchor popup.drawing="$1"
 }
 
 case "$SENDER" in
