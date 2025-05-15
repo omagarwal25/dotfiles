@@ -11,14 +11,14 @@ local notMutedIcon = "􀊰"
 
 local function setBar(state)
 	if state == "off" then
-		bar.set(itemName, { ["label.drawing"] = "off" })
+		bar.set(itemName, { ["drawing"] = "off" })
 
 		return
 	end
 
 	local icon = (state == "muted") and mutedIcon or notMutedIcon
 
-	bar.set(itemName, { ["label.drawing"] = "on" })
+	bar.set(itemName, { ["drawing"] = "on" })
 	bar.set(itemName, { label = icon })
 end
 

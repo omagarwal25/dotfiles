@@ -1,0 +1,3 @@
+@city=London
+
+GET https://api.weatherapi.com/v1/current.json?key={{WEATHER_API_KEY}}&q={{city}}

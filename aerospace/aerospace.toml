@@ -167,6 +167,11 @@ alt-f = [
     'summon-workspace F',
     'exec-and-forget sketchybar --trigger change-workspace-monitor',
 ]
+alt-g = [
+    'summon-workspace G',
+    'exec-and-forget sketchybar --trigger change-workspace-monitor',
+]
+
 
 alt-shift-a = [
     'move-node-to-workspace A',
@@ -190,6 +195,10 @@ alt-shift-e = [
 ]
 alt-shift-f = [
     'move-node-to-workspace F',
+    'exec-and-forget sketchybar --trigger change-workspace-monitor',
+]
+alt-shift-g = [
+    'move-node-to-workspace G',
     'exec-and-forget sketchybar --trigger change-workspace-monitor',
 ]
 
@@ -217,6 +226,11 @@ alt-ctrl-shift-f = [
     'move-node-to-workspace --focus-follows-window F',
     'exec-and-forget sketchybar --trigger change-workspace-monitor',
 ]
+alt-ctrl-shift-g = [
+    'move-node-to-workspace --focus-follows-window G',
+    'exec-and-forget sketchybar --trigger change-workspace-monitor',
+]
+
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
