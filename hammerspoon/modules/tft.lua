@@ -4,20 +4,20 @@ local M = {}
 
 function M.init()
 	hs.hotkey.bind(util.hyper, "T", nil, function()
-		local arc = hs.application.find("Arc")
+		local zen = hs.application.find("Zen")
 		util.runWithDelays({
 
 			function()
-				hs.eventtap.keyStroke(util.hyper, "A", 0)
+				hs.eventtap.keyStroke(util.hyper, "Z", 0)
 			end,
 			function()
-				hs.eventtap.keyStroke({ "ctrl" }, "2", nil, arc)
+				hs.eventtap.keyStroke({ "ctrl" }, "2", nil, zen)
 			end,
 			function()
-				hs.eventtap.keyStroke({ "cmd" }, "7", nil, arc)
+				hs.eventtap.keyStroke({ "cmd" }, "4", nil, zen)
 			end,
 			function()
-				hs.eventtap.keyStroke({ "cmd" }, "s", nil, arc)
+				hs.eventtap.keyStroke({ "cmd", "alt" }, "c", nil, zen)
 			end,
 			function()
 				hs.eventtap.keyStroke({ "alt", "shift" }, "tab", 0)

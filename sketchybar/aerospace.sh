@@ -11,7 +11,7 @@ update_apps() {
     if [ "${apps}" != "" ]; then
       sketchybar --set space."$sid" drawing=on
       while read -r app; do
-        icon_strip+=" $("$CONFIG_DIR"/plugins/icon_map.sh "$app")"
+        icon_strip+=" $("$HOME"/.config/sketchybar/plugins/icon_map.sh "$app")"
       done <<<"${apps}"
     else
       sketchybar --set space."$sid" drawing=off

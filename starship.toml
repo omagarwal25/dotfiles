@@ -2,16 +2,18 @@
 # Insert a blank line between shell prompts
 add_newline = true
 
+palette = "catppuccin_mocha"
+
 # Increase the default command timeout to 2 seconds
 command_timeout = 2000
 
 # Define the order and format of the information in our prompt
 format = """\
-[](fg:#3B76F0)\
+[](fg:pink)\
 $directory\
 ${custom.directory_separator_not_git}\
 ${custom.directory_separator_git}\
-$symbol($git_branch[](fg:#FCF392))\
+$symbol($git_branch[](fg:mauve))\
 $symbol( $git_commit$git_status$git_metrics$git_state)$fill$cmd_duration$nodejs$all
 $character"""
 
@@ -27,7 +29,7 @@ disabled = true
 [directory]
 truncate_to_repo = true
 format = "[ $path ]($style)"
-style = " bg:#3B76F0"
+style = "fg:base bg:pink"
 
 [git_commit]
 commit_hash_length = 7
@@ -35,7 +37,7 @@ commit_hash_length = 7
 [git_branch]
 symbol = " "
 format = "[ $symbol$branch(:$remote_branch) ]($style)"
-style = "fg:#1C3A5E bg:#FCF392"
+style = "fg:base bg:mauve"
 
 [git_metrics]
 disabled = false
@@ -53,7 +55,7 @@ display_private = true
 [cmd_duration]
 min_time = 2_000
 format = "[  $duration ]($style)"
-style = "white"
+style = "text"
 
 # Customize the battery indicator
 [battery]
@@ -79,7 +81,7 @@ style = "text"
 [custom.directory_separator_git]
 description = "Output a styled separator right after the directory when inside a git repository."
 command = ""
-format = "[](fg:#3B76F0 bg:#FCF392)"
+format = "[](fg:pink bg:mauve)"
 # Only when inside git repository
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
 shell = ["zsh"]
@@ -88,7 +90,35 @@ shell = ["zsh"]
 [custom.directory_separator_not_git]
 description = "Output a styled separator right after the directory when NOT inside a git repository."
 command = ""
-format = "[](fg:#3B76F0)"
+format = "[](fg:mauve)"
 # Only when NOT inside a git repository
 when = "! git rev-parse --is-inside-work-tree > /dev/null 2>&1"
 shell = ["zsh"]
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"

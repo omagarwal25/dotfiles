@@ -12,8 +12,7 @@ function M.init()
 	-- Bind Hyper S to spotify
 	bind("S", "Spotify")
 
-	-- Bind Hyper + A to launch Arc
-	bind("A", "Arc")
+	bind("Z", "Zen")
 end
 
 return M

@@ -38,6 +38,7 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.pack.cpp" },
 
   { import = "astrocommunity.programming-language-support.kulala-nvim" },
 

@@ -74,10 +74,12 @@ outer.right = 10
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
 run = ["layout floating"]
-# 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
-# Fallback value (if you omit the key): mode.main.binding = {}
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+if.window-title-regex-substring = 'Picture-in-Picture'
+run = 'layout floating'
+
 [mode.main.binding]
 
 # All possible keys:
