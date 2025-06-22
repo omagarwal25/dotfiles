@@ -8,5 +8,10 @@ return {
       noice = true,
       lsp_trouble = true,
     },
+
+    styles = {
+      keywords = { "italic" },
+      loops = { "italic" },
+    },
   },
 }
