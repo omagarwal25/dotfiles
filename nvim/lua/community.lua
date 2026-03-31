@@ -39,6 +39,7 @@ return {
   { import = "astrocommunity.pack.elixir-phoenix" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.php" },
 
   { import = "astrocommunity.programming-language-support.kulala-nvim" },
 

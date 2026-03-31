@@ -1,4 +1,4 @@
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 font-family = Maple Mono NF
 cursor-style = block
 macos-icon = custom-style
@@ -20,5 +20,4 @@ quick-terminal-position=center
 
 
 
-window-inherit-working-directory = false
 working-directory = home

@@ -19,15 +19,6 @@
                                 ],
                                 "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
-                            },
-                            {
-                                "description": "Map Right Alt to Fn",
-                                "from": {
-                                    "key_code": "right_option",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "fn" }],
-                                "type": "basic"
                             }
                         ]
                     },
@@ -47,33 +38,6 @@
                     }
                 ]
             },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 25361,
-                        "vendor_id": 12851
-                    },
-                    "ignore_vendor_events": true
-                },
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 641,
-                        "vendor_id": 1452
-                    },
-                    "manipulate_caps_lock_led": false
-                },
-                {
-                    "identifiers": {
-                        "is_consumer": true,
-                        "product_id": 154,
-                        "vendor_id": 4057
-                    },
-                    "ignore": false,
-                    "ignore_vendor_events": true
-                }
-            ],
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f5" },
