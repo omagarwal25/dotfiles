@@ -27,10 +27,6 @@ app.init()
 -- sox.init()
 sketchybar.init()
 
-hs.hotkey.bind({}, "f13", function()
-	hs.urlevent.openURL("obsidian://quickadd?choice=%E2%9C%8F%EF%B8%8F%20Tas")
-end)
-
 -- hs.audiodevice.watcher.setCallback(util.combineFns({ sox.watcherCallback, mic.watcherCallback }))
 -- hs.audiodevice.watcher.start()
 

@@ -2,17 +2,17 @@ local util = require("util")
 
 local M = {}
 
-local function bind(key, appName)
-	hs.hotkey.bind(util.hyper, key, function()
-		hs.application.launchOrFocus(appName)
-	end)
-end
+local hyperApps = {
+	S = "Spotify",
+	Z = "Zen",
+}
 
 function M.init()
-	-- Bind Hyper S to spotify
-	bind("S", "Spotify")
-
-	bind("Z", "Zen")
+	for key, appName in pairs(hyperApps) do
+		hs.hotkey.bind(util.hyper, key, function()
+			hs.application.launchOrFocus(appName)
+		end)
+	end
 end
 
 return M

@@ -1,13 +1,43 @@
-.env
-github-copilot
+# Allowlist approach: ignore everything at the root, then opt in.
+# Adding a new tool's config? Add an `!/foo/` line below.
+/*
+
+# Tracked configs
+!/.gitignore
+!/CLAUDE.md
+!/starship.toml
+
+!/aerospace/
+!/aerospace-swipe/
+!/borders/
+!/btop/
+!/ghostty/
+!/hammerspoon/
+!/karabiner/
+!/neofetch/
+!/nushell/
+!/nvim/
+!/posting/
+!/sketchybar/
+!/yazi/
+
+# Junk and secrets that can appear inside tracked dirs
 .DS_Store
-.mono
+.env
 *.bak
-StardewValley
-Autodesk
-yarn
-planetscale
-qBittorrent
-raycast
-calibre
-gcloud
+*.log
+*.swp
+
+# Karabiner writes a new backup on every config save
+karabiner/automatic_backups/
+
+# EmmyLua spoon regenerates these on every Hammerspoon load
+hammerspoon/Spoons/EmmyLua.spoon/annotations/
+
+# Nushell history/state
+nushell/history.txt
+nushell/history.sqlite3*
+nushell/plugin.msgpackz
+
+# Yazi state
+yazi/.history

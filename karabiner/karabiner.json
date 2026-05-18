@@ -19,14 +19,32 @@
                                 ],
                                 "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map Right Alt to Hyper on Ducky",
+                        "manipulators": [
                             {
-                                "description": "Map Right Alt to Fn",
                                 "from": {
                                     "key_code": "right_option",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "key_code": "fn" }],
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [
+                                            { "vendor_id": 12851, "product_id": 25361 }
+                                        ]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
