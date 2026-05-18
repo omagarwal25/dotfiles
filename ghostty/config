@@ -18,6 +18,7 @@ keybind = cmd+k=goto_split:top
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 quick-terminal-position=center
 
-
+notify-on-command-finish=unfocused
+notify-on-command-finish-action=notify
 
 working-directory = home

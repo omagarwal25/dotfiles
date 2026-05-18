@@ -3,7 +3,7 @@ local util = require("util")
 local M = {}
 
 local hyperApps = {
-	S = "Spotify",
+	S = "Qobuz",
 	Z = "Zen",
 }
 
