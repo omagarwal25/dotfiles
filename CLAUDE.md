@@ -25,6 +25,8 @@ The hyper modifier is `ctrl+alt+cmd+shift`. Three independent paths can produce 
 2. **Ducky right alt** — `karabiner.json` has a `device_if`-scoped rule mapping right_option → hyper on the Ducky only (VID `0x3233`, tap-right-alt = Escape).
 3. **Physical F19** — `hammerspoon/modules/hyper.lua` installs an `eventtap` that intercepts F19 and re-emits subsequent keydowns with hyper flags. Requires hardware that emits F19 (custom firmware / macropad); karabiner does not produce it.
 
+`karabiner.json` also remaps caps_lock → left_control (held) / Escape (tap). This is independent of the hyper paths above.
+
 All Hammerspoon hotkeys bind against `util.hyper = { "ctrl", "alt", "cmd", "shift" }` (`hammerspoon/util.lua`). New global hotkeys go in a `hammerspoon/modules/*.lua` exposing `init()`, then required + invoked from `hammerspoon/init.lua` — no raw bindings in `init.lua` itself.
 
 A 50ms release grace timer in `hyper.lua` exists so combos like F19→R don't lose the R keydown if F19 lifts first — don't remove it.

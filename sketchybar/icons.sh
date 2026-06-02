@@ -9,13 +9,6 @@ export LOCK=􀎠
 export BELL=􀋚
 export BELL_DOT=􀝗
 
-# Spotify Icons
-export SPOTIFY_BACK=􀊎
-export SPOTIFY_PLAY_PAUSE=􀊈
-export SPOTIFY_NEXT=􀊐
-export SPOTIFY_SHUFFLE=􀊝
-export SPOTIFY_REPEAT=􀊞
-
 # Volume Icons
 export VOLUME_100=􀊩
 export VOLUME_66=􀊧
