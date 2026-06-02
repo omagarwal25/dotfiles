@@ -13,7 +13,7 @@ return {
   specs = {
     { import = "astrocommunity.completion.copilot-lua" },
     {
-      "Saghen/blink.cmp",
+      "saghen/blink.cmp",
       optional = true,
       opts = function(_, opts)
         if not opts.keymap then opts.keymap = {} end

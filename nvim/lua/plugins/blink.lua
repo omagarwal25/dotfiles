@@ -1,7 +1,5 @@
----@type function?, function?
-
 return {
-  "Saghen/blink.cmp",
+  "saghen/blink.cmp",
   opts = {
     completion = {
       menu = {
