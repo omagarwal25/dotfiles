@@ -27,7 +27,8 @@ while true; do
             label="${label:0:$((MAX - 1))}…"
         fi
 
-        if [ "$rate" = "0" ]; then
+        album=$(nowplaying-cli get-raw 2>/dev/null | jq -r '.kMRMediaRemoteNowPlayingInfoAlbum // empty')
+        if [ "$album" = "paused" ] || [ "$rate" = "0" -a "$album" != "playing" ]; then
             icon=$ICON_PAUSED
         else
             icon=$ICON_PLAYING
